@@ -27,19 +27,19 @@ async function reload() {
 
 // SASS Compile
 const sassCompile =() => {
-    return gulp.src(paths.srcCSS)
-      .pipe(plumber())
-      .pipe(sourcemaps.init())
-      .pipe(sass({
-          outputStyle: 'compressed'
-      }).on('error', sass.logError))
-      .pipe(sourcemaps.write('./'))
-      .pipe(gulp.dest(paths.destCSS)); 
+  return gulp.src(paths.srcCSS)
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+        outputStyle: 'compressed'
+    }).on('error', sass.logError))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(paths.destCSS)); 
 };
 
 // Watch SASS
 gulp.task('watch-scss', gulp.series(() => {
-    return gulp.watch(paths.watchCSS, gulp.series(sassCompile, reload));
+  return gulp.watch(paths.watchCSS, gulp.series(sassCompile, reload));
 }));
 
 // JS Compile
@@ -57,7 +57,7 @@ const compileJS = () => {
 
 // Watch JS
 gulp.task('watch-js', gulp.series(() => {
-    return gulp.watch(paths.srcJS, gulp.series(compileJS, reload));
+  return gulp.watch(paths.srcJS, gulp.series(compileJS, reload));
 }));
 
 // include HTML
@@ -74,19 +74,19 @@ const htmlInclude = () => {
 
 // Watch HTML
 gulp.task('watch-html', gulp.series(() => {
-    return gulp.watch(paths.srcHTML, gulp.series(htmlInclude, reload));
+  return gulp.watch(paths.srcHTML, gulp.series(htmlInclude, reload));
 }));
 
 // Move Assets
 const moveAssets = () => {
-    return gulp.src(paths.srcAssets)
-        .pipe(changed(paths.destAssets))
-        .pipe(gulp.dest(paths.destAssets));
+  return gulp.src(paths.srcAssets)
+    .pipe(changed(paths.destAssets))
+    .pipe(gulp.dest(paths.destAssets));
 };
 
 // Watch Assets
 gulp.task('watch-assets', gulp.series(() => {
-    return gulp.watch(paths.srcAssets, gulp.series(moveAssets, reload));
+  return gulp.watch(paths.srcAssets, gulp.series(moveAssets, reload));
 }));
 
 // Watch all files
