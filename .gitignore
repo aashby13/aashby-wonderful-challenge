@@ -1,0 +1,7 @@
+node_modules/
+.vscode/settings.json
+.sass-cache/
+dest/
+temp/
+.DS_Store
+work/

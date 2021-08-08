@@ -1,0 +1,50 @@
+.logos {
+  width: 60%;
+  margin: 0 20%;
+
+  p {
+    width: 100%;
+    font-size: 1.25em;
+    text-align: center;
+    color: $white;
+  }
+
+  .logos-wrap {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.logo {
+  font-size: 1.6em;
+  height: 1.5em;
+  width: 4em;
+  margin: 0.5em;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.google {
+  width: 4em;
+  background-image: url(/assets/images/google.svg);
+}
+
+.hp {
+  width: 1.5em;
+  background-image: url(/assets/images/hp.svg);
+}
+
+.amazon {
+  background-image: url(/assets/images/amazon.svg);
+}
+
+.shopify {
+  background-image: url(/assets/images/shopify.svg);
+}
+
+.samsung {
+  background-image: url(/assets/images/samsung.svg);
+}
