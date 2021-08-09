@@ -1,4 +1,6 @@
 footer {
+  /* font-size: 1vw; */
+  flex-grow: 1;
   display: grid;
   grid-template-columns: repeat(14, 1fr);
   grid-template-rows: repeat(9, 4.5vw);
@@ -30,7 +32,7 @@ footer {
   }
 
   .circle-path {
-    font-size: 1vw;
+    /* font-size: 1vw; */
     width: 4em;
     height: 4em;
     margin: 10% 0 0 -25%;
@@ -40,7 +42,7 @@ footer {
   }
 
   .circle {
-    font-size: 1vw;
+    /* font-size: 1vw; */
     background-color: $red;
     margin-left: 25%;
     grid-column-start: 11;
