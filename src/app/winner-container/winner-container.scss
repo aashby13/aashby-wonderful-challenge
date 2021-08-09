@@ -1,4 +1,4 @@
-main .winner-container {
+.winner-container {
   /* font-size: 1.5vw; */
   display: grid;
   grid-template-columns: repeat(16, 1fr);
@@ -6,6 +6,7 @@ main .winner-container {
   background: $grey no-repeat url(/assets/images/wave.svg);
   background-size: cover;
   background-position-y: bottom;
+  position: relative;
 
   .dots {
     width: 100%;
@@ -51,22 +52,5 @@ main .winner-container {
     grid-row-start: 2;
     grid-row-end: 6;
     padding-top: 1.5em;
-
-    h3 {
-      color: $black;
-      font-size: 1.25em;
-      font-weight: 600;
-    }
-
-    h2 {
-      color: $white;
-      font-size: 2.5em;
-    }
-
-    p {
-      color: $white;
-      font-size: 1.125em;
-      line-height: 1.5em;
-    }
   }
 }

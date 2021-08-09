@@ -1,0 +1,28 @@
+{
+  "tagline": "Let’s follow a standard plan of attack:",
+  "slides": [{
+    "id": "Start",
+    "title": "Development is <span class=\"black\">80%<span><br>about fundamentals",
+    "text": "Without strong attention to the basics, websites become brittle and eventually catch on fire. Therefore, we should always take the time to set ourselves up for success."
+  }, {
+    "id": "Plan",
+    "title": "<span class=\"black\">Plan your approach<span> for<br>success",
+    "text": "There is no such thing as “luck”. All good development paths start with a well documented plan of attack. Never skip this step!"
+  }, {
+    "id": "Code",
+    "title": "Crack your knuckles<br>and <span class=\"black\">start codin’</span>.",
+    "text": "Now it’s time to get down to business. Find a solid mixtape and plugin."
+  }, {
+    "id": "QA",
+    "title": "Don’t forget to <span class=\"black\">QA!</span>",
+    "text": "Even the best engineers need a second set of eyes on their work. Find a peer, sit them down, and force them to make sure you are as awesome as you think!"
+  }, {
+    "id": "Launch",
+    "title": "Everything good? Then<br><span class=\"black\">launch it!</span>",
+    "text": "Everybody wants their site delivered “yesterday” - which means there is no time to lose in getting your work live!"
+  }, {
+    "id": "Win!",
+    "title": "<span class=\"black\">You did it!</span> We always<br>believed in you.",
+    "text": "Now go grab a treat (maybe a doughnut) and enjoy the fruits of your labor!"
+  }]
+}

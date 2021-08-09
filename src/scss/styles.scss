@@ -42,12 +42,6 @@ header {
 main {
   padding-top: 3em;
 
-  .ss-container {
-    width: 100%;
-    height: 36em;
-    border: thin solid blue;
-  }
-
   .headline {
     padding: 2em 5% 4em;
     background-color: $red;
@@ -67,7 +61,8 @@ main {
 }
 
 @import 'global-classes.scss';
-@import '../nav/nav.scss';
-@import '../logos-container/logos-container.scss';
-@import '../winner-container/winner-container.scss';
-@import '../footer/footer.scss';
+@import '../app/nav/nav.scss';
+@import '../app/slideshow-container/slideshow-container.scss';
+@import '../app/logos-container/logos-container.scss';
+@import '../app/winner-container/winner-container.scss';
+@import '../app/footer/footer.scss';

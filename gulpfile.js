@@ -10,10 +10,11 @@ const server = require('browser-sync').create();
 
 const paths = {
   src: './src/',
-  srcJS: './src/**/*.js',
+  srcJS: './src/app/**/*.js',
   srcCSS: './src/scss/*.scss',
-  watchCSS: './src/**/*.scss',
-  srcHTML: './src/**/*.html',
+  watchCSS: './src/**/**/*.scss',
+  srcHTML: './src/app/**/*.html',
+  srcIndex: './src/app/index.html',
   srcAssets: './src/assets/**/*',
   dest: './dest/',
   destJS: './dest/js/',
@@ -63,7 +64,7 @@ gulp.task('watch-js', gulp.series(() => {
 // include HTML
 const htmlInclude = () => {
   return gulp.src([
-    './src/index.html'
+    paths.srcIndex
     ])
     .pipe(fileinclude({
       prefix: '@@',
