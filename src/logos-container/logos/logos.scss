@@ -1,0 +1,57 @@
+.logos {
+  font-size: 1.5vw;
+  grid-column-start: 3;
+  grid-column-end: 13;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  display: flex;
+  flex-direction: column;
+  height: 200%;
+  justify-content: flex-end;
+
+  p {
+    width: 100%;
+    text-align: center;
+    color: $white;
+    margin: 0 0 0.5em;
+  }
+
+  .logos-wrap {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+
+    .logo {
+      height: 2em;
+      width: 4.5em;
+      margin: 0.5em;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+
+    .google {
+      background-image: url(/assets/images/google.svg);
+    }
+
+    .hp {
+      width: 2em;
+      background-image: url(/assets/images/hp.svg);
+    }
+
+    .amazon {
+      background-image: url(/assets/images/amazon.svg);
+    }
+
+    .shopify {
+      background-image: url(/assets/images/shopify.svg);
+    }
+
+    .samsung {
+      background-image: url(/assets/images/samsung.svg);
+    }
+  }
+}
+
+

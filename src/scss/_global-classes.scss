@@ -1,0 +1,120 @@
+.btn {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: $grey;
+  padding: 0.4rem 1.5rem 0.6em;
+  border-radius: 0.3rem;
+  border: thin solid transparent;
+  transition: border-color 0.3s ease-out;
+}
+
+.btn:hover {
+  border-color: $grey;
+}
+
+a.btn,
+a.alt-btn {
+  text-decoration: none;
+}
+
+a.btn:visited {
+  color: $grey;
+}
+
+button.btn {
+  width: fit-content;
+}
+
+.btn.btn-black {
+  background-color: $black;
+}
+
+.alt-btn {
+  color: $black;
+  font-size: 1.125em;
+  display: flex;
+  align-items: center;
+
+  .arrow {
+    margin-left: 1em;
+    width: 0.7em;
+    height: 0.7em;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+  }
+
+  .arrow::before {
+    content: "";
+    width: 0.7em;
+    height: 0.7em;
+    margin-left: -0.7em;
+    margin-top: -20.5%;
+    border: 0.15em solid $black;
+    position: absolute;
+    transform: rotate(45deg);
+  }
+}
+
+a.alt-btn:visited {
+  color: $black;
+}
+
+.circle-path {
+  width: 5em;
+  height: 5em;
+  border: 0.15em solid $light-pink;
+  border-radius: 50%;
+}
+
+.circle {
+  width: 0.8em;
+  height: 0.8em;
+  background-color: $light-pink;
+  border-radius: 50%;
+}
+
+.stars {
+  width: 1.5em;
+  height: 1.5em;
+  background: transparent no-repeat url(/assets/images/stars.png);
+  background-size: cover;
+}
+
+.stars.stars-pink {
+  background-image: url(/assets/images/stars-pink.png);
+}
+
+.dots {
+  width: 22.125em;
+  height: 21.25em;
+  background: transparent no-repeat url(/assets/images/dots.svg);
+  background-size: contain;
+}
+
+.content {
+  font-size: 1.25vw;
+
+  h3 {
+    color: $black;
+    font-size: 1.25em;
+    font-weight: 600;
+  }
+
+  h2 {
+    color: $white;
+    font-size: 2.5em;
+    margin: 0.4em 0;
+  }
+
+  p {
+    color: $white;
+    font-size: 1.125em;
+    line-height: 1.5em;
+    margin-top: 0;
+  }
+
+  *:first-child {
+    margin-top: 0;
+  }
+}

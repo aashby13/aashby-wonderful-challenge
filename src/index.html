@@ -10,6 +10,7 @@
 </head>
 <body>
   <header>
+    <div class="arrow"></div>
     <div class="stars"></div>
     @@include('./nav/nav.html')
   </header>
@@ -18,7 +19,8 @@
     <section class="ss-container"></section>
 
     <section class="logos-container">
-      @@include('./logos/logos.html')
+      @@include('./logos-container/logos/logos.html')
+      @@include('./logos-container/circles/circles.html')
     </section>
 
     <section class="headline">
@@ -26,12 +28,11 @@
         <span>think about the user</span> - how will they feel?</p>
     </section>
 
-    <section class="bottom-container"></section>
+    @@include('./winner-container/winner-container.html')
 
   </main>
 
-  <footer>
-
-  </footer>
+  @@include('./footer/footer.html')
+  
 </body>
 </html>

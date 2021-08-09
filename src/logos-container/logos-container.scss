@@ -1,0 +1,9 @@
+main .logos-container {
+  font-size: 1vw;
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-template-rows: repeat(4, 3.5em);
+
+  @import 'logos/logos.scss';
+  @import 'circles/circles.scss';
+}
