@@ -37,6 +37,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1000;
 }
 
 main {
@@ -62,7 +63,7 @@ main {
 
 @import 'global-classes.scss';
 @import '../app/nav/nav.scss';
-@import '../app/slideshow-container/slideshow-container.scss';
+@import '../app/slideshow/slideshow.scss';
 @import '../app/logos-container/logos-container.scss';
 @import '../app/winner-container/winner-container.scss';
 @import '../app/footer/footer.scss';
