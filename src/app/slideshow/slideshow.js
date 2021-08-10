@@ -3,8 +3,36 @@ class Slideshow extends HTMLElement {
   data = null;
   nav = null;
   tagline = null;
-  currentIndex = 0;
+  contentWrap = null
+  prevIndex = null;
   currentData = null;
+  _currentIndex = 0;
+
+  get currentIndex() {
+    return this._currentIndex;
+  }
+  set currentIndex(n) {
+    this.prevIndex = this._currentIndex;
+    this._currentIndex = n;
+    if (this._currentIndex !== this.prevIndex) {
+      this.nav.setAttribute('data-current', this._currentIndex);
+      this.contentWrap.classList.remove('fade');
+      //
+      if (this._currentIndex%2) {
+        this.contentWrap.classList.add('switch');
+      } else {
+        this.contentWrap.classList.remove('switch');
+      }
+      //
+      if (this.prevIndex%2 === this._currentIndex%2) {
+        window.requestAnimationFrame(() => this.contentWrap.classList.add('fade'));
+      }
+      //
+      setTimeout(() => {
+        this.changeContent();
+      }, 500);
+    }
+  }
 
   constructor() {
     super();
@@ -33,13 +61,31 @@ class Slideshow extends HTMLElement {
     this.tagline = this.children.namedItem('tagline');
     this.tagline.innerHTML = this.data.tagline;
     //
+    this.contentWrap = this.children.namedItem('content-wrap');
+    this.changeContent();
+    //
     this.addEventListener('slideshownav', (e) => this.navCallback(e));
     this.classList.add('show');
+    //
+    this.autoPlay();
   }
 
   navCallback(e) {
     this.currentIndex = this.data.slides.findIndex(s => s.id === e.detail.id);
-    this.nav.setAttribute('data-current', this.currentIndex);
+  }
+
+  changeContent() {
+    this.currentData = this.data.slides[this.currentIndex];
+    this.contentWrap.children[0].children[0].innerHTML = this.currentData.title;
+    this.contentWrap.children[0].children[1].innerHTML = this.currentData.text;
+  }
+
+  autoPlay() {
+    setTimeout(() => {
+      if (this._currentIndex === this.data.slides.length -1) this.currentIndex = 0;
+      else this.currentIndex++;
+      this.autoPlay();
+    }, 6000);
   }
 }
 

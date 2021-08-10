@@ -40,7 +40,7 @@ class SlideshowNav extends HTMLElement {
   }
 
   /**
-   * Dispatches CustomEvent 'slideshownav', which passes the slide ID for the parent (slideshow-el) to listen to;
+   * Dispatches CustomEvent 'slideshownav', which passes the slide ID to the parent (slideshow-el) listening.
    * @param {PointerEvent || MouseEvent} e Event of clicking on dotWrap button
    */
   onDotClick(e) {

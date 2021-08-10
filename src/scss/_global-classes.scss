@@ -35,7 +35,7 @@ button.btn {
 
 .alt-btn {
   color: $black;
-  font-size: 1.125em;
+  font-size: 1em;
   display: flex;
   align-items: center;
 
@@ -112,7 +112,7 @@ a.alt-btn:visited {
   }
 
   p {
-    color: $white;
+    color: $black;
     font-size: 1.125em;
     line-height: 1.5em;
     margin-top: 0;
@@ -120,5 +120,21 @@ a.alt-btn:visited {
 
   *:first-child {
     margin-top: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0.5em 0 0 0;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  li {
+    list-style: none;
+    margin: 0 0.5em;
+  }
+
+  li:first-child {
+    margin-left: 0;
   }
 }
