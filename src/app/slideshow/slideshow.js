@@ -1,19 +1,92 @@
 class Slideshow extends HTMLElement {
 
-  data = null;
+  autoPlay = false;
+  delay = 10000;
+  timer = null;
   nav = null;
   tagline = null;
   contentWrap = null
   prevIndex = null;
   currentData = null;
-  _currentIndex = 0;
 
+  _data = null;
+  get data() {
+    return this._data;
+  }
+  set data(dta) {
+    this._data = dta;
+    this.onData();
+  }
+
+  _currentIndex = 0;
   get currentIndex() {
     return this._currentIndex;
   }
   set currentIndex(n) {
     this.prevIndex = this._currentIndex;
     this._currentIndex = n;
+    this.animate();
+  }
+
+  
+
+
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    /* this.loadData(); */
+  }
+
+  static get observedAttributes() {
+    return ['auto-play', 'delay'];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    console.log(name, newValue, typeof newValue);
+    if (name === 'delay' && newValue) this.delay = parseInt(newValue);
+    //
+    if (name === 'auto-play') {
+      if (newValue === 'true') this.autoPlay = true; 
+      else this.autoPlay = false;
+      if (this._data && this.autoPlay) this.onAutoPlay();
+    }
+  }
+
+  onData() {
+    this.nav = this.children.namedItem('ss-nav');
+    this.nav.setAttribute('data-ids', this.data.slides.map(s => s.id));
+    this.nav.setAttribute('data-current', this.currentIndex);
+    // 
+    this.tagline = this.children.namedItem('tagline');
+    this.tagline.innerHTML = this.data.tagline;
+    //
+    this.contentWrap = this.children.namedItem('content-wrap');
+    this.changeContent();
+    //
+    this.addEventListener('slideshownav', (e) => this.navCallback(e));
+    this.classList.add('show');
+    //
+    if (this.autoPlay) this.onAutoPlay();
+  }
+
+  navCallback(e) {
+    this.currentIndex = this.data.slides.findIndex(s => s.id === e.detail.id);
+    if (this.timer) {
+      clearTimeout(this.timer);
+      this.timer = null;
+    } 
+    if (this.autoPlay) this.onAutoPlay();
+  }
+
+  changeContent() {
+    this.currentData = this.data.slides[this.currentIndex];
+    this.contentWrap.children[0].children[0].innerHTML = this.currentData.title;
+    this.contentWrap.children[0].children[1].innerHTML = this.currentData.text;
+  }
+
+  animate() {
     if (this._currentIndex !== this.prevIndex) {
       this.nav.setAttribute('data-current', this._currentIndex);
       this.contentWrap.classList.remove('fade');
@@ -30,62 +103,16 @@ class Slideshow extends HTMLElement {
       //
       setTimeout(() => {
         this.changeContent();
-      }, 500);
+      }, 700);
     }
   }
 
-  constructor() {
-    super();
-  }
-
-  connectedCallback() {
-    this.loadData();
-  }
-
-  static get observedAttributes() {
-    return [/* array of attribute names to monitor for changes */];
-  }
-
-  attributeChangedCallback(name, oldValue, newValue) {
-    // called when one of attributes listed above is modified
-  }
-
-  async loadData() {
-    const x = await fetch('/assets/json/slideshow.json');
-    this.data = await x.json();
-    //
-    this.nav = this.children.namedItem('ss-nav');
-    this.nav.setAttribute('data-ids', this.data.slides.map(s => s.id));
-    this.nav.setAttribute('data-current', this.currentIndex);
-    // 
-    this.tagline = this.children.namedItem('tagline');
-    this.tagline.innerHTML = this.data.tagline;
-    //
-    this.contentWrap = this.children.namedItem('content-wrap');
-    this.changeContent();
-    //
-    this.addEventListener('slideshownav', (e) => this.navCallback(e));
-    this.classList.add('show');
-    //
-    this.autoPlay();
-  }
-
-  navCallback(e) {
-    this.currentIndex = this.data.slides.findIndex(s => s.id === e.detail.id);
-  }
-
-  changeContent() {
-    this.currentData = this.data.slides[this.currentIndex];
-    this.contentWrap.children[0].children[0].innerHTML = this.currentData.title;
-    this.contentWrap.children[0].children[1].innerHTML = this.currentData.text;
-  }
-
-  autoPlay() {
-    setTimeout(() => {
+  onAutoPlay() {
+    this.timer = setTimeout(() => {
       if (this._currentIndex === this.data.slides.length -1) this.currentIndex = 0;
       else this.currentIndex++;
-      this.autoPlay();
-    }, 6000);
+      this.onAutoPlay();
+    }, this.delay);
   }
 }
 
