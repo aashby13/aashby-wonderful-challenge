@@ -50,6 +50,15 @@ export default class Slideshow extends HTMLElement {
   }
 
   connectedCallback() {
+    window.addEventListener('blur', () => {
+      if (this.timer) {
+        clearTimeout(this.timer);
+        this.timer = null;
+      }
+    });
+    window.addEventListener('focus', () => {
+      if (!this.timer && this._autoPlay) this.onAutoPlay();
+    });
     this.nav = this.children.namedItem('ss-nav');
     this.tagline = this.children.namedItem('tagline');
     this.contentWrap = this.children.namedItem('content-wrap');
