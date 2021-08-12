@@ -77,10 +77,11 @@ export default class Slideshow extends HTMLElement {
     this.changeContent();
     //
     this.addEventListener('slideshownav', (e) => this.navCallback(e));
-    this.classList.add('show');
+    /* this.classList.add('show'); */
     //
     gsap.set([this.titleEl, this.textEl, this.btnWrap], {xPercent: 108});
     gsap.set(this.graphic, {xPercent: -206});
+    gsap.to(this, {opacity: 1, ease: 'sine.out', duration: 0.8, delay: 1.6});
     gsap.to('#graphic svg #big-gear', {duration: 8, rotation: 360, repeat: -1, transformOrigin: 'center', ease: 'none'});
     gsap.to('#graphic svg #small-gear', {duration: 4, rotation: -360, repeat: -1, transformOrigin: 'center', ease: 'none'});
     this.slideContentAnimLeft.play(0);

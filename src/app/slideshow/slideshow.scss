@@ -4,7 +4,7 @@ slideshow-el {
   grid-template-rows: repeat(9, 4em);
   position: relative;
   opacity: 0;
-  transition: opacity 0.8s 1.6s ease-out;
+  /* transition: opacity 0.8s 1.6s ease-out; */
 
   .dots {
     width: 100%;
@@ -63,6 +63,6 @@ slideshow-el {
   @import 'slideshow-nav/slideshow-nav.scss';
 }
 
-slideshow-el.show {
+/* slideshow-el.show {
   opacity: 1;
-}
+} */
