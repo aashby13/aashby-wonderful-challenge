@@ -70,11 +70,11 @@ export default class Slideshow extends HTMLElement {
     this.addEventListener('slideshownav', (e) => this.navCallback(e));
     this.classList.add('show');
     //
-    gsap.set([this.titleEl, this.textEl, this.btnWrap], {xPrecent: 108});
+    gsap.set([this.titleEl, this.textEl, this.btnWrap], {xPercent: 108});
     gsap.set(this.graphic, {xPercent: -206});
     gsap.to('#graphic svg #big-gear', {duration: 8, rotation: 360, repeat: -1, transformOrigin: 'center', ease: 'none'});
     gsap.to('#graphic svg #small-gear', {duration: 4, rotation: -360, repeat: -1, transformOrigin: 'center', ease: 'none'});
-    this.slideContentAnim.reverse(this.slideContentAnim.duration());
+    this.slideContentAnimLeft.play(0);
     this.graphicAnimRight.play(0);
     
   }
@@ -117,7 +117,7 @@ export default class Slideshow extends HTMLElement {
     //
     elArr.reverse();
     //
-    this.slideContentAnim = gsap.timeline({paused: true})
+    this.slideContentAnimRight = gsap.timeline({paused: true})
       .to(elArr, {
         duration: 0.35,
         opacity: 0,
@@ -135,8 +135,27 @@ export default class Slideshow extends HTMLElement {
         xPercent: 108,
         stagger: 0.15,
         ease: 'power2.in'
-      }, '+=0.5')
-      .to(elArr, {opacity: 1, duration: 0.4});
+      }, '+=0.5');
+    //
+    this.slideContentAnimLeft = gsap.timeline({paused: true})
+      .to(elArr, {
+        duration: 0.35,
+        opacity: 0,
+        rotateX: 90,
+        xPercent: 76,
+        stagger: 0.15,
+        ease: 'power2.in'
+      }, 0.4)
+      .set(elArr, { rotateX: -90, xPercent: 36 })
+      .call(() => this.changeContent())
+      .to(elArr.reverse(), {
+        duration: 0.35,
+        opacity: 1,
+        rotateX: 0,
+        xPercent: 0,
+        stagger: 0.15,
+        ease: 'power2.in'
+      }, '+=0.5');
     //
     this.graphicAnimLeft = gsap.timeline({paused: true})
       .to(['#graphic svg #triangle', '#graphic svg #small-gear', '#graphic svg #big-gear'], {
@@ -216,11 +235,11 @@ export default class Slideshow extends HTMLElement {
         
       } else if (this._currentIndex%2) {
         // content go right, graphic go left
-        this.slideContentAnim.play(0);
+        this.slideContentAnimRight.play(0);
         this.graphicAnimLeft.play(0);
       } else {
         // content go left, graphic go right
-        this.slideContentAnim.reverse(this.slideContentAnim.duration());
+        this.slideContentAnimLeft.play(0);
         this.graphicAnimRight.play(0);
       }
     }
