@@ -47,7 +47,7 @@ export default class App {
       ease: 'sine.out',
       scrollTrigger: {
           trigger: '.logos-container',
-          start: 'top center',
+          start: 'top center+=10%',
           toggleActions: 'play none none none'
         }
     })
@@ -63,7 +63,7 @@ export default class App {
       ease: 'power2.out',
       scrollTrigger: {
           trigger: '.headline',
-          start: 'top center',
+          start: 'top center+=20%',
           toggleActions: 'play none none none'
         }
     })
