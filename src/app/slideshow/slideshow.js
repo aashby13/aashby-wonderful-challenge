@@ -1,38 +1,35 @@
-class Slideshow extends HTMLElement {
+export default class Slideshow extends HTMLElement {
 
-  autoPlay = false;
-  delay = 10000;
-  timer = null;
-  nav = null;
-  tagline = null;
-  contentWrap = null
-  prevIndex = null;
-  currentData = null;
+  constructor() {
+    super();
 
-  _data = null;
-  get data() {
-    return this._data;
+    this.autoPlay = false;
+    this.delay = 10000;
+    this.timer = null;
+    this.nav = null;
+    this.tagline = null;
+    this.contentWrap = null
+    this.prevIndex = null;
+    this.urrentData = null;
+    this._data = null;
+    this._currentIndex = 0;
   }
+
+  get data() {
+      return this._data;
+    }
   set data(dta) {
     this._data = dta;
     this.onData();
   }
 
-  _currentIndex = 0;
   get currentIndex() {
-    return this._currentIndex;
-  }
+      return this._currentIndex;
+    }
   set currentIndex(n) {
     this.prevIndex = this._currentIndex;
     this._currentIndex = n;
     this.animate();
-  }
-
-  
-
-
-  constructor() {
-    super();
   }
 
   connectedCallback() {

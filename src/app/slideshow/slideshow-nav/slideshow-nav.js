@@ -1,9 +1,9 @@
-class SlideshowNav extends HTMLElement {
-
-  buttons = [];
+export default class SlideshowNav extends HTMLElement {
 
   constructor() {
     super();
+
+    this.buttons = [];
   }
 
   static get observedAttributes() {

@@ -7,6 +7,7 @@ const sass = require('gulp-sass')(require('node-sass'));
 const changed = require('gulp-changed');
 const fileinclude = require('gulp-file-include');
 const server = require('browser-sync').create();
+const rollup = require('gulp-rollup');
 
 const paths = {
   src: './src/',
@@ -45,7 +46,7 @@ gulp.task('watch-scss', gulp.series(() => {
 
 // JS Compile
 const compileJS = () => {
-  return gulp.src(paths.srcJS, {
+  /* return gulp.src(paths.srcJS, {
       sourcemaps: true
     })
     .pipe(plumber())
@@ -53,7 +54,20 @@ const compileJS = () => {
     .pipe(concat('index.js'))
     .pipe(uglify())
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(paths.destJS)); 
+    .pipe(gulp.dest(paths.destJS)); */ 
+
+  return gulp.src(paths.srcJS)
+    .pipe(sourcemaps.init())
+    
+    .pipe(rollup({
+      input: './src/app/index.js',
+      output: {
+        format: 'esm'
+      }
+    }))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(paths.destJS));
 };
 
 // Watch JS

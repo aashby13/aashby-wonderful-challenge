@@ -19,11 +19,13 @@
   "homepage": "https://github.com/aashby13/aashby-wonderful-challenge#readme",
   "dependencies": {
     "browser-sync": "^2.27.5",
+    "gsap": "file:gsap-bonus.tgz",
     "gulp": "^4.0.2",
     "gulp-changed": "^4.0.3",
     "gulp-concat": "^2.6.1",
     "gulp-file-include": "^2.3.0",
     "gulp-plumber": "^1.2.1",
+    "gulp-rollup": "^2.17.0",
     "gulp-sass": "^5.0.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify-es": "^3.0.0",

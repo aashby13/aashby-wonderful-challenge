@@ -1,17 +1,17 @@
-(function() {
-  class App {
-    constructor() { 
-        this.init(); 
-    }
+export default class App {
 
-    async init() {
-      const x = await fetch('/assets/json/slideshow.json');
-      const data = await x.json();
-      document.querySelector('slideshow-el').data = data;
-    }
+  constructor() { 
+      this.init(); 
   }
-  const app = new App();
-})();
+
+  async init() {
+    const x = await fetch('/assets/json/slideshow.json');
+    const data = await x.json();
+    document.querySelector('slideshow-el').data = data;
+  }
+}
+
+
 
 
 
