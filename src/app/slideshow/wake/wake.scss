@@ -1,0 +1,15 @@
+wake-el {
+  width: 93%;
+  position: absolute;
+  margin-top: -11.2em;
+  z-index: 0;
+
+  svg {
+    width: 100%;
+    height: 100%;
+
+    .hide {
+      visibility: hidden;
+    }
+  }
+}

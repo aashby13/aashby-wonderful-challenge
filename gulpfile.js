@@ -7,7 +7,8 @@ const sass = require('gulp-sass')(require('node-sass'));
 const changed = require('gulp-changed');
 const fileinclude = require('gulp-file-include');
 const server = require('browser-sync').create();
-const rollup = require('gulp-rollup');
+const rollup = require('gulp-rollup-2').rollup;
+const resolve = require ('@rollup/plugin-node-resolve').nodeResolve;
 
 const paths = {
   src: './src/',
@@ -58,12 +59,15 @@ const compileJS = () => {
 
   return gulp.src(paths.srcJS)
     .pipe(sourcemaps.init())
-    
     .pipe(rollup({
+      external: ['window'],
       input: './src/app/index.js',
-      output: {
-        format: 'esm'
-      }
+      output: [{
+        file: 'index.js',
+        format: 'umd',
+        globals: {window: 'window'}
+      }],
+      plugins: [ resolve() ]
     }))
     .pipe(uglify())
     .pipe(sourcemaps.write('./'))
