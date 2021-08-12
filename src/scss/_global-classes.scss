@@ -81,18 +81,18 @@ a.alt-btn:visited {
 .stars {
   width: 1.5em;
   height: 1.5em;
-  background: transparent no-repeat url(/assets/images/stars.png);
+  background: transparent no-repeat url(../assets/images/stars.png);
   background-size: cover;
 }
 
 .stars.stars-pink {
-  background-image: url(/assets/images/stars-pink.png);
+  background-image: url(../assets/images/stars-pink.png);
 }
 
 .dots {
   width: 22.125em;
   height: 21.25em;
-  background: transparent no-repeat url(/assets/images/dots.svg);
+  background: transparent no-repeat url(../assets/images/dots.svg);
   background-size: contain;
 }
 
